@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
 public class ProductDetails {
-    private Long id;
+    @Id
+    private Long id;          // NO @GeneratedValue: the id comes from the product
     private String createdBy;
     private LocalDate createdOn;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
     private Product product;
 
     public ProductDetails() {

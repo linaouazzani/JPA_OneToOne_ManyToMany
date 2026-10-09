@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
+    @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList<>();
-
 
     // Getters and setters
     public Long getId() {
